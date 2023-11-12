@@ -1,5 +1,6 @@
-class queue():
+class queue:
     '''Queue Class'''
+
     def __init__(self):
         self.items = []
 
