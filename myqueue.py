@@ -10,7 +10,7 @@ class queue:
     def dequeue(self):
         return self.items.pop()
 
-    def isempty(self):
+    def isEmpty(self):
         return self.items == []
 
     def size(self):
