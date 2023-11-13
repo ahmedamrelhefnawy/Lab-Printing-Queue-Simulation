@@ -1,28 +1,31 @@
-from myprinter import printer
-from myqueue import queue
-from mytask import task
+from myPrinter import printer
+from myQueue import queue
+from myTask import task
 
 import random
 
-def simulation(numseconds, pagesPerMinute):
-    
+
+def simulation(numSeconds, pagesPerMinute):
+
     labPrinter = printer(pagesPerMinute)
     printQueue = queue()
-    waitingtimes = []
-    
-    for currentsecond in range(numseconds):
-        if random.randrange(1,181) == 180:
-            newtask = task(currentsecond)
-            printQueue.enqueue(newtask)
-            
+    waitingTimes = []
+
+    for currentSecond in range(numSeconds):
+        if random.randrange(1, 181) == 180:
+            newTask = task(currentSecond)
+            printQueue.enqueue(newTask)
+
         if (not labPrinter.busy()) and (not printQueue.isEmpty()):
-            nexttask = printQueue.dequeue()
-            waitingtimes.append(nexttask.waitTime(currentsecond))
-            labPrinter.startNext(nexttask)
+            nextTask = printQueue.dequeue()
+            waitingTimes.append(nextTask.waitTime(currentSecond))
+            labPrinter.startNext(nextTask)
         labPrinter.tick()
-        
-    averagewait = sum(waitingtimes) / len(waitingtimes)
-    print("Averagewait ",str(round(averagewait,2)).zfill(7),"secs   ",printQueue.size()," tasks remaining.")
-    
+
+    averageWait = sum(waitingTimes) / len(waitingTimes)
+    print("Averagewait ", str(round(averageWait, 2)).zfill(7),
+          "secs   ", printQueue.size(), " tasks remaining.")
+
+
 for i in range(10):
-    simulation(3600,5)
+    simulation(3600, 5)

@@ -16,6 +16,6 @@ class printer:
         else:
             return False
 
-    def startNext(self, newtask):
-        self.currentTask = newtask
-        self.timeRemaining = newtask.getPages() * 60 / self.pageRate
+    def startNext(self, newTask):
+        self.currentTask = newTask
+        self.timeRemaining = newTask.getPages() * 60 / self.pageRate
