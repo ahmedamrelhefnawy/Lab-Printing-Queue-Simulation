@@ -23,7 +23,7 @@ def simulation(numSeconds, pagesPerMinute):
         labPrinter.tick()
 
     averageWait = sum(waitingTimes) / len(waitingTimes)
-    print("Averagewait ", str(round(averageWait, 2)).zfill(7),
+    print("Average wait ", str(round(averageWait, 2)).zfill(7),
           "secs   ", printQueue.size(), " tasks remaining.")
 
 
